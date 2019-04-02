@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <tabs>
     <Tab text="Encryption">
          <content>
-            <GridPane>
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="213.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="463.0" minWidth="10.0" prefWidth="164.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="463.0" minWidth="10.0" prefWidth="279.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="240.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                   <Label text="Enter your N:" GridPane.columnIndex="0" />
-                    <TextField promptText="N" GridPane.columnIndex="1"/>
-
+                  <Label layoutX="14.0" layoutY="14.0" text="Step 1">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="45.0" text="Enter N:" />
+                  <TextField fx:id="nVal" layoutX="88.0" layoutY="40.0" prefHeight="31.0" prefWidth="77.0" />
+                  <Label layoutX="14.0" layoutY="78.0" text="p value:" />
+                  <Label layoutX="14.0" layoutY="107.0" text="q value:" />
+                  <Label id="pValue" fx:id="pValue" layoutX="88.0" layoutY="78.0" text="Label" />
+                  <Label id="qValue" fx:id="qValue" layoutX="88.0" layoutY="107.0" text="Label" />
+                  <Button layoutX="175.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#qpCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Calculate" />
                </children>
-            </GridPane>
+            </AnchorPane>
          </content></Tab>
     <Tab text="Decryption" />
   </tabs>
