@@ -5,10 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import java.util.ArrayList;
 
@@ -41,6 +47,9 @@ public class Main extends Application {
     private TextArea messageVal;
 
     @FXML
+    private Button step2Button;
+
+    @FXML
     private Label pVal, qVal, timeTaken , dVal, decryptedMessageVal;
 
     public void qpCalc(){
@@ -68,6 +77,7 @@ public class Main extends Application {
 
 
     public void decryptStep1(){
+        List<Integer> primeNumbers = primeNumbersBruteForce(2,100000);
          n = Integer.parseInt(nValDecrpytion.getText());
          e = Integer.parseInt(eValDecrpytion.getText());
         boolean modFound = false;
@@ -75,13 +85,17 @@ public class Main extends Application {
         int i = 0;
         int j = 0;
         while(!modFound){
-             if(primes[i] * primes[j] == n){
-                 mod = (primes[i] -1) * (primes[j] -1);
+             if(primeNumbers.get(i) * primeNumbers.get(j) == n){
+                 mod = (primeNumbers.get(i) -1) * (primeNumbers.get(j) -1);
                  modFound = true;
              }else{
-                 if(i != primes.length-1){
+                 if(i != primeNumbers.size()-1){
                      i++;
-                 }else{
+                 }
+                 else if(j == primeNumbers.size()-1){
+
+                 }
+                 else{
                      i = 0;
                      j++;
                  }
@@ -90,21 +104,66 @@ public class Main extends Application {
         int x = 0;
         boolean dFound = false;
         while(!dFound){
-            if((e * primes[x]) % mod == 1){
-                d = primes[x];
+            if((e * primeNumbers.get(x)) % mod == 1){
+                d = primeNumbers.get(x);
                 dFound = true;
             }else{
                 x++;
+
             }
         }
         dVal.setText(String.valueOf(d));
+        step2Button.setDisable(false);
     }
 
     public void decryptStep2(){
         String message = messageVal.getText();
         String[] messageList = message.split(",");
+        String decryptedMessage = new String();
         for (String messagePart: messageList) {
-            int encryptedLetter = Integer.parseInt(messagePart);
+            BigDecimal encryptedLetterNumber = BigDecimal.valueOf(Integer.parseInt(messagePart));
+
+            BigDecimal decryptedLetterNumberBD =  encryptedLetterNumber.pow(d);
+            int decryptedLetterNumber = decryptedLetterNumberBD.remainder(new BigDecimal(n)).intValue();
+            char decryptedLetter = (char)decryptedLetterNumber;
+            decryptedMessage += decryptedLetter;
         }
+        decryptedMessageVal.setText(decryptedMessage);
+    }
+
+    private List<Integer> primeFactors(int numbers) {
+        int n = numbers;
+        List<Integer> factors = new ArrayList<Integer>();
+        for (int i = 2; i <= n / i; i++) {
+            while (n % i == 0) {
+                factors.add(i);
+                n /= i;
+            }
+        }
+        if (n > 1) {
+            factors.add(n);
+        }
+        return factors;
+    }
+
+
+    private  List<Integer> primeNumbersBruteForce(int start , int end) {
+        List<Integer> primeNumbers = new LinkedList<>();
+        for (int i = start; i <= end; i++) {
+            if (isPrimeBruteForce(i)) {
+                primeNumbers.add(i);
+            }
+        }
+        return primeNumbers;
+    }
+
+    private  boolean isPrimeBruteForce(int number) {
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
+
