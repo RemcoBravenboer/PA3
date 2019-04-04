@@ -4,11 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
   <tabs>
     <Tab text="Encryption">
          <content>
@@ -29,6 +30,35 @@
                </children>
             </AnchorPane>
          </content></Tab>
-    <Tab text="Decryption" />
+    <Tab text="Decryption">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                   <Label layoutX="14.0" layoutY="14.0" text="Step 1">
+                       <font>
+                           <Font name="System Bold" size="21.0" />
+                       </font>
+                   </Label>
+                   <Label layoutX="14.0" layoutY="45.0" text="Enter N:" />
+                   <TextField fx:id="nValDecrpytion" layoutX="88.0" layoutY="40.0" prefHeight="31.0" prefWidth="77.0" />
+                   <Label layoutX="14.0" layoutY="80.0" text="Enter E:" />
+                   <TextField fx:id="eValDecrpytion" layoutX="88.0" layoutY="80.0" prefHeight="31.0" prefWidth="77.0" />
+                   <Button layoutX="88.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#decryptStep1" style="-fx-background-color: black; -fx-text-fill: white;" text="Calculate" />
+                   <Label layoutX="14.0" layoutY="150.0" text="d value:" />
+                   <Label id="dValue" fx:id="pVal" layoutX="88.0" layoutY="150.0" />
+
+                   <Label layoutX="14.0" layoutY="170.0" text="Step 2">
+                       <font>
+                           <Font name="System Bold" size="21.0" />
+                       </font>
+                   </Label>
+                   <Label layoutX="14.0" layoutY="200.0" text="Message:" />
+                   <TextArea layoutX="88.0" layoutY="200.0" fx:id="messageVal" prefHeight="60.0" prefWidth="400.0" />
+                   <Button layoutX="88.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#decryptStep2" style="-fx-background-color: black; -fx-text-fill: white;" text="Decrypt" />
+                   <Label layoutX="14.0" layoutY="300.0" text="Decrypted message:" />
+                   <Label id="dValue" fx:id="decryptedMessageVal" layoutX="14.0" layoutY="320.0" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
   </tabs>
 </TabPane>
