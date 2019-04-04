@@ -45,7 +45,7 @@
                    <TextField fx:id="eValDecrpytion" layoutX="88.0" layoutY="80.0" prefHeight="31.0" prefWidth="77.0" />
                    <Button layoutX="88.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#decryptStep1" style="-fx-background-color: black; -fx-text-fill: white;" text="Calculate" />
                    <Label layoutX="14.0" layoutY="150.0" text="d value:" />
-                   <Label id="dValue" fx:id="pVal" layoutX="88.0" layoutY="150.0" />
+                   <Label id="dValue" fx:id="dVal" layoutX="88.0" layoutY="150.0" />
 
                    <Label layoutX="14.0" layoutY="170.0" text="Step 2">
                        <font>

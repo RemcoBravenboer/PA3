@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -14,12 +15,15 @@ public class Main extends Application {
     public static int pValue;
     public static int qValue;
     public static int i = 1;
+    private int e;
+    private int n;
+    private int d;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Discrete Mathematics: Practical assignment 3");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 500, 450));
         primaryStage.show();
     }
 
@@ -29,10 +33,13 @@ public class Main extends Application {
     }
 
     @FXML
-    private TextField nVal;
+    private TextField nVal, nValDecrpytion, eValDecrpytion;
 
     @FXML
-    private Label pVal, qVal, timeTaken;
+    private TextArea messageVal;
+
+    @FXML
+    private Label pVal, qVal, timeTaken , dVal, decryptedMessageVal;
 
     public void qpCalc(){
         int nValue = Integer.parseInt(nVal.getText());
@@ -53,5 +60,48 @@ public class Main extends Application {
                 i++;
             }
         }
+    }
+
+
+
+
+    public void decryptStep1(){
+         n = Integer.parseInt(nValDecrpytion.getText());
+         e = Integer.parseInt(eValDecrpytion.getText());
+        boolean modFound = false;
+        int mod =0;
+        int i = 0;
+        int j = 0;
+        while(!modFound){
+             if(primes[i] * primes[j] == n){
+                 mod = (primes[i] -1) * (primes[j] -1);
+                 modFound = true;
+             }else{
+                 if(i != primes.length-1){
+                     i++;
+                 }else{
+                     i = 0;
+                     j++;
+                 }
+             }
+        }
+        int x = 0;
+        boolean dFound = false;
+        while(!dFound){
+            if((e * primes[x]) % mod == 1){
+                d = primes[x];
+                dFound = true;
+            }else{
+                x++;
+            }
+        }
+        dVal.setText(String.valueOf(d));
+
+
+
+    }
+
+    public void decryptStep2(){
+
     }
 }
