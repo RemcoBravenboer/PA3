@@ -26,6 +26,7 @@ public class Main extends Application {
     private int e;
     private int n;
     private int d;
+    private int eValue;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -47,10 +48,10 @@ public class Main extends Application {
     private TextArea messageVal;
 
     @FXML
-    private Button step2Button;
+    private Button step2Button, eCalcButton;
 
     @FXML
-    private Label pVal, qVal, timeTaken , dVal, decryptedMessageVal;
+    private Label pVal, qVal, timeTaken , dVal, decryptedMessageVal, eVal;
 
     public void qpCalc(){
         int nValue = Integer.parseInt(nVal.getText());
@@ -66,11 +67,27 @@ public class Main extends Application {
                 pVal.setText(String.valueOf(pValue));
                 qVal.setText(String.valueOf(qValue));
                 timeTaken.setText("Time taken to calculate: " + (System.currentTimeMillis() - timeStart) +"ms");
+                eCalcButton.setDisable(false);
                 pFound = true;
             } else {
                 i++;
             }
         }
+    }
+
+    public void eCalc(){
+        int pMinQ = (pValue -1) * (qValue -1);
+        List<Integer> factors =  primeFactors(pMinQ);
+
+        List<Integer> primeNumbers = primeNumbersBruteForce(2,10000);
+        for(int i = 0; i < primeNumbers.size(); i++ ){
+            if(!factors.contains(primeNumbers.get(i))){
+                eValue = primeNumbers.get(i);
+                break;
+            }
+        }
+        eVal.setText(String.valueOf(eValue));
+        
     }
 
 
