@@ -25,7 +25,7 @@
                         <Label layoutX="14.0" layoutY="107.0" text="q value:" />
                         <Label id="pValue" fx:id="pVal" layoutX="88.0" layoutY="78.0" />
                         <Label id="qValue" fx:id="qVal" layoutX="88.0" layoutY="107.0" />
-                        <Button layoutX="175.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#qpCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Calculate pq" />
+                        <Button layoutX="175.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#qpCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Step 1" />
                         <Label fx:id="timeTaken" layoutX="14.0" layoutY="136.0" />
                   <Label fx:id="lblStep2" layoutX="14.0" layoutY="158.0" text="Step 2">
                      <font>
@@ -33,7 +33,7 @@
                      </font>
                   </Label>
                   <Label fx:id="eVal" layoutX="14.0" layoutY="189.0" text="e found:" />
-                  <Button layoutX="175.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#eCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Calculate e" />
+                  <Button fx:id="eCalcButton" layoutX="175.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#eCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Step 2" disable="true"/>
                   <Label layoutX="14.0" layoutY="230.0" text="Step 3">
                      <font>
                         <Font name="System Bold" size="21.0" />
@@ -41,9 +41,9 @@
                   </Label>
                   <Label layoutX="14.0" layoutY="261.0" text="Message:" />
                   <TextField fx:id="msgToEncrypt" layoutX="88.0" layoutY="256.0" prefHeight="31.0" prefWidth="401.0" />
-                  <Button layoutX="493.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#encryptMsg" style="-fx-background-color: black; -fx-text-fill: white;" text="Encrypt" />
+                  <Button fx:id="encrpytMsgButton" layoutX="493.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#encryptMsg" style="-fx-background-color: black; -fx-text-fill: white;" text="Step 3" disable="true" />
                   <Label layoutX="14.0" layoutY="293.0" prefHeight="29.0" prefWidth="136.0" text="Encrypted message:" />
-                  <Label fx:id="encryptedMsg" layoutX="150.0" layoutY="296.0" prefHeight="24.0" prefWidth="437.0" />
+                  <Label fx:id="encryptedMsg" layoutX="14.0" layoutY="310.0" />
                     </children>
                 </AnchorPane>
             </content></Tab>
