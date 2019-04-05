@@ -18,24 +18,15 @@
                         <Label layoutX="14.0" layoutY="14.0" text="Step 1">
                             <font>
                                 <Font name="System Bold" size="21.0" />
-                            </font>
-                        </Label>
+                            </font></Label>
                         <Label layoutX="14.0" layoutY="45.0" text="Enter N:" />
                         <TextField fx:id="nVal" layoutX="88.0" layoutY="40.0" prefHeight="31.0" prefWidth="77.0" />
                         <Label layoutX="14.0" layoutY="78.0" text="p value:" />
                         <Label layoutX="14.0" layoutY="107.0" text="q value:" />
                         <Label id="pValue" fx:id="pVal" layoutX="88.0" layoutY="78.0" />
                         <Label id="qValue" fx:id="qVal" layoutX="88.0" layoutY="107.0" />
-                        <Button layoutX="175.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#qpCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Step 1" />
+                        <Button layoutX="175.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#qpCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Calculate" />
                         <Label fx:id="timeTaken" layoutX="14.0" layoutY="136.0" />
-                        <Label layoutX="14.0" layoutY="150.0" text="Step 2">
-                            <font>
-                                <Font name="System Bold" size="21.0" />
-                            </font>
-                        </Label>
-                        <Button fx:id="eCalcButton" layoutX="14.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#eCalc" style="-fx-background-color: black; -fx-text-fill: white;" text="Step 2" disable="true"/>
-                        <Label layoutX="14.0" layoutY="210.0" text="e is " />
-                        <Label fx:id="eVal" layoutX="88.0" layoutY="210.0" />
                     </children>
                 </AnchorPane>
             </content></Tab>
